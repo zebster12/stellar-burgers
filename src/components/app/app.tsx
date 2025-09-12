@@ -119,7 +119,7 @@ const App = () => {
           <Route
             path='/feed/:number'
             element={
-              <Modal title={''} onClose={onCloseModal}>
+              <Modal onClose={onCloseModal}>
                 <OrderInfo />
               </Modal>
             }

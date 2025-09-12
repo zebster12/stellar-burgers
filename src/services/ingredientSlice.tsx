@@ -4,14 +4,7 @@ import { TIngredient } from '@utils-types';
 
 const ingredientsFetch = createAsyncThunk(
   'ingredients/fetchAll',
-  async (_, thunkAPI) => {
-    try {
-      console.log(thunkAPI);
-      return await getIngredientsApi();
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  getIngredientsApi
 );
 
 interface IngredientsState {
@@ -44,8 +37,11 @@ export const ingredientsSlice = createSlice({
         state.loading = false;
         state.error = action.payload as string;
       });
+  },
+  selectors: {
+    ingredientsSelector: (state) => state.items
   }
 });
-
+export const { ingredientsSelector } = ingredientsSlice.selectors;
 export const ingridientReducer = ingredientsSlice.reducer;
 export { ingredientsFetch };

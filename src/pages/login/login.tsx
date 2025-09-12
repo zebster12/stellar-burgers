@@ -1,30 +1,39 @@
-import { FC, SyntheticEvent, useState } from 'react';
+import { FC, SyntheticEvent } from 'react';
 import { LoginUI } from '@ui-pages';
-
 import { Preloader } from '@ui';
 import { useDispatch, useSelector } from '../../services/store';
-import { loginUserThunk, selectUserLoading } from '../../services/user';
+import {
+  loginUserThunk,
+  selectError,
+  selectUserLoading
+} from '../../services/user';
+import { useForm } from '../../hooks/useForm';
 
 export const Login: FC = () => {
-  const [email, setEmail] = useState('nikita123@mail.ru');
-  const [password, setPassword] = useState('123456789');
+  // Правильная деструктуризация based на возвращаемом объекте
+  const { form, setValue } = useForm({
+    email: 'nikita123@mail.ru',
+    password: '123456789'
+  });
+
   const dispatch = useDispatch();
+  const error = useSelector(selectError);
+  const loading = useSelector(selectUserLoading);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    dispatch(loginUserThunk({ email, password }));
+    dispatch(loginUserThunk(form)); // Используем form вместо values
   };
 
-  const loading = useSelector(selectUserLoading);
   if (loading) return <Preloader />;
 
   return (
     <LoginUI
-      errorText=''
-      email={email}
-      setEmail={setEmail}
-      password={password}
-      setPassword={setPassword}
+      errorText={error || ''}
+      email={form.email} // Используем form.email
+      setEmail={(value) => setValue('email', value)} // Используем setValue
+      password={form.password} // Используем form.password
+      setPassword={(value) => setValue('password', value)} // Используем setValue
       handleSubmit={handleSubmit}
     />
   );

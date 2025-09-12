@@ -16,7 +16,10 @@ export const registerUserThunk = createAsyncThunk(
   'user/register',
   async (newUserData: TRegisterData, { rejectWithValue }) => {
     try {
-      return await registerUserApi(newUserData);
+      const response = await registerUserApi(newUserData);
+      setCookie('accessToken', response.accessToken);
+      localStorage.setItem('refreshToken', response.refreshToken);
+      return response.user;
     } catch (err: any) {
       return rejectWithValue(
         err.message || 'Ошибка регистрации нового пользователя'
@@ -29,7 +32,10 @@ export const loginUserThunk = createAsyncThunk(
   'user/login',
   async (loginData: TLoginData, { rejectWithValue }) => {
     try {
-      return await loginUserApi(loginData);
+      const response = await loginUserApi(loginData);
+      setCookie('accessToken', response.accessToken);
+      localStorage.setItem('refreshToken', response.refreshToken);
+      return response.user;
     } catch (err: any) {
       return rejectWithValue(err.message || 'Ошибка входа (логина)');
     }
@@ -40,7 +46,8 @@ export const updateUserThunk = createAsyncThunk(
   'user/update',
   async (userPartialData: Partial<TRegisterData>, { rejectWithValue }) => {
     try {
-      return await updateUserApi(userPartialData);
+      const response = await updateUserApi(userPartialData);
+      return response.user;
     } catch (err: any) {
       return rejectWithValue(
         err.message || 'Ошибка изменения данных пользователя'
@@ -92,7 +99,6 @@ export interface UserState {
 export const initialState: UserState = {
   user: null,
   isAuthChecked: false,
-
   loading: false,
   error: null
 };
@@ -120,9 +126,7 @@ export const userSlice = createSlice({
       })
       .addCase(registerUserThunk.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.user;
-        setCookie('accessToken', action.payload.accessToken);
-        localStorage.setItem('refreshToken', action.payload.refreshToken);
+        state.user = action.payload;
         state.isAuthChecked = true;
       })
       .addCase(registerUserThunk.rejected, (state, action) => {
@@ -136,9 +140,7 @@ export const userSlice = createSlice({
       })
       .addCase(loginUserThunk.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.user;
-        setCookie('accessToken', action.payload.accessToken);
-        localStorage.setItem('refreshToken', action.payload.refreshToken);
+        state.user = action.payload;
         state.isAuthChecked = true;
       })
       .addCase(loginUserThunk.rejected, (state, action) => {
@@ -152,7 +154,7 @@ export const userSlice = createSlice({
       })
       .addCase(updateUserThunk.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.user;
+        state.user = action.payload;
       })
       .addCase(updateUserThunk.rejected, (state, action) => {
         state.loading = false;
@@ -166,8 +168,6 @@ export const userSlice = createSlice({
       .addCase(logoutUserThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.user = null;
-        setCookie('accessToken', '', { expires: -1 });
-        localStorage.removeItem('refreshToken');
       })
       .addCase(logoutUserThunk.rejected, (state, action) => {
         state.loading = false;
@@ -177,11 +177,16 @@ export const userSlice = createSlice({
   selectors: {
     selectUser: (state) => state.user,
     selectIsAuthChecked: (state) => state.isAuthChecked,
-    selectUserLoading: (state) => state.loading
+    selectUserLoading: (state) => state.loading,
+    selectError: (state) => state.error
   }
 });
-export const { selectUser, selectIsAuthChecked, selectUserLoading } =
-  userSlice.selectors;
+export const {
+  selectUser,
+  selectIsAuthChecked,
+  selectUserLoading,
+  selectError
+} = userSlice.selectors;
 export const { setUser } = userSlice.actions;
 
 export const userReducer = userSlice.reducer;
