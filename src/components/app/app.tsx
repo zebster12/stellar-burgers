@@ -12,7 +12,13 @@ import {
 import '../../index.css';
 import styles from './app.module.css';
 
-import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
+import {
+  AppHeader,
+  IngredientDetails,
+  Modal,
+  OrderInfo,
+  OrderStatus
+} from '@components';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { TIngredient } from '../../utils/types';
@@ -21,8 +27,21 @@ import { useSelector } from '../../services/store';
 import { checkUserAuth, setIsAuthChecked } from '../../services/user';
 import { ProtectedRoute, UnAuthRoute } from '../protectedRoute';
 import { ingredientsFetch } from '../../services/ingredientSlice';
-
+export const getOrderStatusText = (status: string): string => {
+  const statusText: { [key: string]: string } = {
+    pending: 'Готовится',
+    done: 'Выполнен',
+    created: 'Создан'
+  };
+  return statusText[status] || 'Неизвестный статус';
+};
 const App = () => {
+  const numberOrder = useSelector(
+    (state) => state.orders.orderByNumber?.number
+  );
+  const statusrOrder = useSelector(
+    (state) => state.orders.orderByNumber?.status
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -119,7 +138,10 @@ const App = () => {
           <Route
             path='/feed/:number'
             element={
-              <Modal onClose={onCloseModal}>
+              <Modal
+                title={`#${numberOrder || ''} ${getOrderStatusText(statusrOrder || 'unknown')}`}
+                onClose={onCloseModal}
+              >
                 <OrderInfo />
               </Modal>
             }
