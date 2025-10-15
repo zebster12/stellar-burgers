@@ -6,8 +6,8 @@ import { FC, useEffect } from 'react';
 import {
   selectFeedOrders,
   selectOrdersLoading
-} from '../../services/orderSlice';
-import { getFeedsThunk } from '../../services/orderSlice';
+} from '../../services/orderSlice/orderSlice';
+import { getFeedsThunk } from '../../services/orderSlice/orderSlice';
 
 export const Feed: FC = () => {
   const dispatch = useDispatch();

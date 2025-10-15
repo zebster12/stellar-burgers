@@ -24,9 +24,12 @@ import { useEffect } from 'react';
 import { TIngredient } from '../../utils/types';
 import { useDispatch } from '../../services/store';
 import { useSelector } from '../../services/store';
-import { checkUserAuth, setIsAuthChecked } from '../../services/user';
 import { ProtectedRoute, UnAuthRoute } from '../protectedRoute';
-import { ingredientsFetch } from '../../services/ingredientSlice';
+import {
+  checkUserAuth,
+  setIsAuthChecked
+} from '../../services/userSlice/userSlice';
+import { ingredientsFetch } from '../../services/ingredientSlice/ingredientSlice';
 export const getOrderStatusText = (status: string): string => {
   const statusText: { [key: string]: string } = {
     pending: 'Готовится',

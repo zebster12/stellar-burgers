@@ -7,8 +7,8 @@ import {
   getUserOrdersThunk,
   selectNewOrder,
   selectUserOrders
-} from '../../services/orderSlice';
-import { selectUser } from '../../services/user';
+} from '../../services/orderSlice/orderSlice';
+import { selectUser } from '../../services/userSlice/userSlice';
 
 export const ProfileOrders: FC = () => {
   const dispatch = useDispatch();

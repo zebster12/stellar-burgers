@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from '../../services/store';
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
-import { updateUserThunk } from '../../services/user';
+import { updateUserThunk } from '../../services/userSlice/userSlice';
 import { TRegisterData } from '@api';
-import { selectUser } from '../../services/user';
+import { selectUser } from '../../services/userSlice/userSlice';
 
 export const Profile: FC = () => {
   const dispatch = useDispatch();

@@ -6,13 +6,13 @@ import {
   loginUserThunk,
   selectError,
   selectUserLoading
-} from '../../services/user';
+} from '../../services/userSlice/userSlice';
 import { useForm } from '../../hooks/useForm';
 
 export const Login: FC = () => {
   // Правильная деструктуризация based на возвращаемом объекте
   const { form, setValue } = useForm({
-    email: 'nikita123@mail.ru',
+    email: 'valera123321@mail.ru',
     password: '123456789'
   });
 

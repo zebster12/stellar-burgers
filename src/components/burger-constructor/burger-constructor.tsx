@@ -6,14 +6,14 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import {
   selectBurgerConstructor,
   clearBurger
-} from '../../services/constructorSlice';
-import { selectUser } from '../../services/user';
+} from '../../services/constructorSlice/constructorSlice';
+import { selectUser } from '../../services/userSlice/userSlice';
 import {
   postUserBurderThunk,
   selectNewOrder,
   selectOrderRequest,
   setNewOrder
-} from '../../services/orderSlice';
+} from '../../services/orderSlice/orderSlice';
 import { AppDispatch } from '../../services/store';
 
 export const BurgerConstructor: FC = () => {
