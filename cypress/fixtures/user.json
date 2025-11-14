@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "user": {
+    "email": "valera123321@mail.ru",
+    "name": "Никита"
+  },
+  "accessToken": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "refreshToken": "mock-refresh-token"
+}

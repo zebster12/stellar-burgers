@@ -1,0 +1,89 @@
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "60d3b41b86f774001c8a573e",
+      "name": "Краторная булка N-200i",
+      "type": "bun",
+      "proteins": 80,
+      "fat": 24,
+      "carbohydrates": 53,
+      "calories": 420,
+      "price": 1255,
+      "image": "https://code.s3.yandex.net/react/code/bun-02.png",
+      "image_mobile": "https://code.s3.yandex.net/react/code/bun-02-mobile.png",
+      "image_large": "https://code.s3.yandex.net/react/code/bun-02-large.png",
+      "__v": 0
+    },
+    {
+      "_id": "60d3b41b86f774001c8a573f",
+      "name": "Флюоресцентная булка R2-D3",
+      "type": "bun",
+      "proteins": 44,
+      "fat": 26,
+      "carbohydrates": 85,
+      "calories": 643,
+      "price": 510,
+      "image": "https://code.s3.yandex.net/react/code/bun-01.png",
+      "image_mobile": "https://code.s3.yandex.net/react/code/bun-01-mobile.png",
+      "image_large": "https://code.s3.yandex.net/react/code/bun-01-large.png",
+      "__v": 0
+    },
+    {
+      "_id": "60d3b41b86f774001c8a5740",
+      "name": "Говядина в ломтиках",
+      "type": "main",
+      "proteins": 99,
+      "fat": 20,
+      "carbohydrates": 14,
+      "calories": 804,
+      "price": 566,
+      "image": "https://code.s3.yandex.net/react/code/meat-04.png",
+      "image_mobile": "https://code.s3.yandex.net/react/code/meat-04-mobile.png",
+      "image_large": "https://code.s3.yandex.net/react/code/meat-04-large.png",
+      "__v": 0
+    },
+    {
+      "_id": "60d3b41b86f774001c8a5741",
+      "name": "Интерstellar бургер",
+      "type": "main",
+      "proteins": 100,
+      "fat": 67,
+      "carbohydrates": 100,
+      "calories": 100,
+      "price": 10000,
+      "image": "https://code.s3.yandex.net/react/code/meat-03.png",
+      "image_mobile": "https://code.s3.yandex.net/react/code/meat-03-mobile.png",
+      "image_large": "https://code.s3.yandex.net/react/code/meat-03-large.png",
+      "__v": 0
+    },
+    {
+      "_id": "60d3b41b86f774001c8a5742",
+      "name": "Соус Spicy-X",
+      "type": "sauce",
+      "proteins": 5,
+      "fat": 10,
+      "carbohydrates": 15,
+      "calories": 100,
+      "price": 50,
+      "image": "https://code.s3.yandex.net/react/code/sauce-01.png",
+      "image_mobile": "https://code.s3.yandex.net/react/code/sauce-01-mobile.png",
+      "image_large": "https://code.s3.yandex.net/react/code/sauce-01-large.png",
+      "__v": 0
+    },
+    {
+      "_id": "60d3b41b86f774001c8a5743",
+      "name": "Соус фирменный Space Sauce",
+      "type": "sauce",
+      "proteins": 3,
+      "fat": 5,
+      "carbohydrates": 10,
+      "calories": 60,
+      "price": 40,
+      "image": "https://code.s3.yandex.net/react/code/sauce-02.png",
+      "image_mobile": "https://code.s3.yandex.net/react/code/sauce-02-mobile.png",
+      "image_large": "https://code.s3.yandex.net/react/code/sauce-02-large.png",
+      "__v": 0
+    }
+  ]
+}

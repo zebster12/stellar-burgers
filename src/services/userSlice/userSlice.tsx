@@ -6,11 +6,11 @@ import {
   TLoginData,
   TRegisterData,
   updateUserApi
-} from '@api';
+} from '../../utils/burger-api';
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { getCookie, setCookie } from '../utils/cookie';
 import { createSlice } from '@reduxjs/toolkit';
 import { TUser } from '@utils-types';
+import { getCookie, setCookie } from '../../utils/cookie';
 
 export const registerUserThunk = createAsyncThunk(
   'user/register',

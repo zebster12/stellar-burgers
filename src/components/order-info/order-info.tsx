@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 import {
   getOrderByNumberThunk,
   selectOrderByNumber
-} from '../../services/orderSlice';
+} from '../../services/orderSlice/orderSlice';
 import { RootState } from '../../services/store';
 
 export const OrderInfo: FC = () => {
