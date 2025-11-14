@@ -96,8 +96,10 @@
     "format": "prettier ./src --write",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "gh-pages -d build"
   },
+  "homepage": "https://zebster12.github.io/stellar-burgers",
   "eslintConfig": {
     "extends": [
       "plugin:storybook/recommended"
