@@ -52,7 +52,8 @@ module.exports = {
       extensions: ['.js', '.jsx', '.ts', '.tsx']
     }),
     new HtmlWebpackPlugin({
-      template: './public/index.html'
+      template: './public/index.html',
+      publicPath: '/stellar-burgers/'
     }),
     new Dotenv()
   ],
@@ -82,11 +83,9 @@ module.exports = {
     }
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? '/stellar-burgers/'
-      : '/'
+    publicPath: '/stellar-burgers/' // <- обязательно!
   },
   devServer: {
     static: path.join(__dirname, './dist'),

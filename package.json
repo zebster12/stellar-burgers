@@ -97,6 +97,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "test": "jest",
+    "build": "webpack --mode=production",
     "deploy": "gh-pages -d build"
   },
   "homepage": "https://zebster12.github.io/stellar-burgers",
